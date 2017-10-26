@@ -1,0 +1,58 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerController : MonoBehaviour {
+
+	public bool isFlipped = false;
+	public bool onGoal = false;
+
+	public KeyCode upInput = KeyCode.UpArrow;
+	public KeyCode downInput = KeyCode.DownArrow;
+	public KeyCode leftInput = KeyCode.LeftArrow;
+	public KeyCode rightInput = KeyCode.RightArrow;
+
+	public GameObject frontFeeler = null;
+	public GameObject backFeeler = null;
+	public GameObject rightFeeler = null;
+	public GameObject leftFeeler = null;
+
+	// Use this for initialization
+	void Start () {
+		
+	}
+	
+	// Update is called once per frame
+	void Update () {
+
+	
+		if (Input.GetKeyDown (upInput)) {
+			if (frontFeeler.GetComponent<Feeler> ().isValid == true) {
+				transform.Translate (Vector3.forward);
+			}
+		}
+
+
+		if (Input.GetKeyDown (downInput)) {
+			if (backFeeler.GetComponent<Feeler> ().isValid == true) {
+				transform.Translate (Vector3.back);
+			}
+		}
+
+
+		if (Input.GetKeyDown (leftInput)) {
+			if (leftFeeler.GetComponent<Feeler> ().isValid == true) {
+				transform.Translate (Vector3.left);
+			}
+		}
+
+
+		if (Input.GetKeyDown (rightInput)) {
+			if (rightFeeler.GetComponent<Feeler> ().isValid == true) {
+				transform.Translate (Vector3.right);
+			}
+		}
+
+	}
+
+}
